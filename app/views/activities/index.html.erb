@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktivitäten-Feed</title>
+    <%= stylesheet_link_tag "home", media: "all", "data-turbo-track": "reload" %>
+  </head>
+
+  <body>
+  <nav class="navbar navbar-expand-lg navbar-custom">
+      <a class="navbar-brand" href="#">HomeAssist</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li>
+          <a class="nav-link" href="<%= old_home_path %>">Zur Hauptseite</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= profile_path %>">Profil</a>
+          </li>
+          <!-- Neuer Gruppen-Link -->
+          <li class="nav-item">
+            <a class="nav-link" href="<%= groups_path %>">Gruppenverwaltung</a>
+          </li>
+          <li class="nav-item">
+  			<%= button_to 'Logout', logout_path, method: :delete, class: 'nav-link btn btn-link logout-btn', data: { confirm: 'Möchtest du dich wirklich ausloggen?' }, form: { class: 'd-inline' } %>
+		  </li>
+        </ul>
+      </div>
+    </nav>
+      <h1>Aktivitäten-Feed</h1>
+      <ul class="list-group">
+        <% @activities.each do |activity| %>
+          <li class="list-group-item">
+            <strong><%= activity.whodunnit || 'Unbekannt' %></strong> hat <%= activity.item_type %> geändert: 
+            <%= activity.event %> am <%= activity.created_at.strftime("%d.%m.%Y %H:%M") %>.
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </body>
+</html>

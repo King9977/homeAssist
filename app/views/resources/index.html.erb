@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ressourcen in der Gruppe <%= @group.name %></title>
+    <%= stylesheet_link_tag "home", media: "all", "data-turbo-track": "reload" %>
+  </head>
+  <body>
+  <nav class="navbar navbar-expand-lg navbar-custom">
+      <a class="navbar-brand" href="#">HomeAssist</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li>
+          <a class="nav-link" href="<%= old_home_path %>">Zur Hauptseite</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= profile_path %>">Profil</a>
+          </li>
+          <!-- Neuer Gruppen-Link -->
+          <li class="nav-item">
+            <a class="nav-link" href="<%= groups_path %>">Gruppenverwaltung</a>
+          </li>
+          <li>
+            <a class="nav-link" href="<%= activities_path %>">Aktivitäten-Feed</a>
+		  </li>
+          <li class="nav-item">
+  			<%= button_to 'Logout', logout_path, method: :delete, class: 'nav-link btn btn-link logout-btn', data: { confirm: 'Möchtest du dich wirklich ausloggen?' }, form: { class: 'd-inline' } %>
+		  </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="resources-container">
+      <h1>Ressourcen in der Gruppe <%= @group.name %></h1>
+<% if @group.admin?(current_user) %>
+  <div class="form-buttons">
+    <%= link_to 'Neue Ressource erstellen', new_group_resource_path(@group), class: 'custom-btn btn-success' %>
+  </div>
+<% end %>
+      <table class="resource-table">
+        <thead>
+          <tr>
+            <th>Ressourcenname</th>
+            <th>Menge</th>
+            <th>Aktionen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @resources.each do |resource| %>
+            <tr>
+              <td><strong><%= resource.name %></strong></td>
+              <td><%= resource.quantity %></td>
+              <td>
+                <% if @group.admin?(current_user) %>
+                  <div class="d-flex gap-2">
+                    <%= link_to 'Bearbeiten', edit_group_resource_path(@group, resource), class: 'custom-btn btn-primary' %>
+                    <%= button_to 'Löschen', group_resource_path(@group, resource), method: :delete, data: { confirm: 'Möchtest du diese Ressource wirklich löschen?' }, class: 'btn btn-danger' %>
+                  </div>
+                <% else %>
+                  <p>Nur Gruppenadmins können Ressourcen erstellen, bearbeiten oder löschen.</p>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

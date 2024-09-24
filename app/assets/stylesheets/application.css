@@ -1,0 +1,124 @@
+/* Globales Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f4f3; /* Leichtes Grün für den Hintergrund */
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  max-width: 400px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Weicher Schatten für moderne Optik */
+  display: flex;
+  flex-direction: column; /* Ordnet alles vertikal an */
+  gap: 20px; /* Platz zwischen den Elementen */
+}
+
+h1 {
+  text-align: center;
+  color: #2e7d32; /* Dunkleres Grün für Überschriften */
+  margin-bottom: 10px;
+}
+
+p {
+  text-align: center;
+  color: #666;
+  margin: 10px 0;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #2e7d32; /* Grün für Labels */
+  display: block; /* Stellt sicher, dass das Label über dem Eingabefeld steht */
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #c8e6c9; /* Hellgrüner Rand */
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #f5f5f5;
+  transition: border-color 0.3s, background-color 0.3s; /* Glatter Übergang bei Hover und Fokus */
+}
+
+.form-group input:focus {
+  border-color: #2e7d32; /* Intensiveres Grün bei Fokus */
+  background-color: #ffffff;
+  outline: none;
+}
+
+/* Styling für Buttons */
+.btn-primary {
+  background-color: #2e7d32; /* Primärfarbe: Grün */
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #1b5e20; /* Dunkleres Grün bei Hover */
+}
+
+.btn-outline-primary {
+  background-color: white;
+  color: #2e7d32;
+  padding: 10px;
+  border: 2px solid #2e7d32;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-outline-primary:hover {
+  background-color: #2e7d32;
+  color: white;
+}
+
+/* Flash-Nachricht Styling */
+p[style*="color: red"] {
+  background-color: #ffebee;
+  border: 1px solid #e57373;
+  padding: 10px;
+  border-radius: 5px;
+  color: #d32f2f;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Zusätzliche vertikale Ausrichtung */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Abstand zwischen den Formularfeldern */
+}
+
+form .form-group {
+  display: block; /* Stellt sicher, dass jedes Eingabefeld seinen eigenen Platz hat */
+}
+
+form .btn-primary,
+form .btn-outline-primary {
+  margin-top: 10px; /* Abstand zu den Formularfeldern */
+}

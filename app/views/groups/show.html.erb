@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gruppe: <%= @group.name %></title>
+    <%= stylesheet_link_tag "home", media: "all", "data-turbo-track": "reload" %>
+  </head>
+  <body>
+  <nav class="navbar navbar-expand-lg navbar-custom">
+      <a class="navbar-brand" href="#">HomeAssist</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li>
+          <a class="nav-link" href="<%= old_home_path %>">Zur Hauptseite</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= profile_path %>">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= groups_path %>">Gruppenverwaltung</a>
+          </li>
+          <li>
+            <a class="nav-link" href="<%= activities_path %>">Aktivitäten-Feed</a>
+		  </li>
+          <li class="nav-item">
+  			<%= button_to 'Logout', logout_path, method: :delete, class: 'nav-link btn btn-link logout-btn', data: { confirm: 'Möchtest du dich wirklich ausloggen?' }, form: { class: 'd-inline' } %>
+		  </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="group-details-container">
+      <h1>Gruppe: <%= @group.name %></h1>
+
+      <p><strong>Gruppenbeitrittscode:</strong> <%= @group_code %></p>
+
+      <h2>Gruppenadmins</h2>
+      <table class="group-table">
+        <thead>
+          <tr>
+            <th>Admin-Name</th>
+            <th>Aktionen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @group.group_admins.each do |admin| %>
+            <tr>
+              <td><%= admin.name %></td>
+              <td>
+              <% if @group.group_admins.include?(current_user) %>
+                <% unless admin == current_user %> <!-- Admin kann sich nicht selbst entfernen -->
+                  <%= button_to 'Rauswerfen', kick_user_group_path(@group, user_id: admin.id), method: :delete, class: 'custom-btn btn-danger', data: { confirm: 'Bist du sicher?' } %>
+                <% end %>
+              <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <br></br>
+
+      <h2>Mitglieder</h2>
+  <table class="group-table">
+  <thead>
+    <tr>
+      <th>Benutzername</th>
+      <th>Aktionen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <% unless @group.group_admins.include?(member) %>
+        <tr>
+          <td><%= member.name %></td>
+          <td>
+            <% if @group.group_admins.include?(current_user) %>
+              <% unless member == current_user %>
+                <div class="button-group">
+                  <%= button_to 'Zu Admin machen', promote_to_admin_group_path(@group, user_id: member.id), method: :patch, class: 'custom-btn btn-warning', data: { confirm: 'Soll dieser Benutzer ein Admin werden?' } %>
+                  <%= button_to 'Rauswerfen', kick_user_group_path(@group, user_id: member.id), method: :delete, class: 'custom-btn btn-danger', data: { confirm: 'Bist du sicher?' } %>
+                </div>
+              <% end %>
+            <% else %>
+              <p>Nur Gruppenadmins können Benutzer entfernen oder zu Admins machen.</p>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+    </div>
+    <br></br>
+     <div class="form-buttons">
+      </div>
+  </body>
+</html>

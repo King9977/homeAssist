@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Willkommen bei HomeAssist</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <%= stylesheet_link_tag "landing_page", media: "all", "data-turbo-track": "reload" %>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <%= image_tag 'logo.jpg', alt: 'HomeAssist Logo', class: 'navbar-logo' %>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <%= link_to 'Login', login_path, class: 'nav-link btn btn-success text-dark px-3 mx-2' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Registrieren', new_registration_path, class: 'nav-link btn btn-outline-primary px-3 mx-2' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <h1>Organisiere deine Aufgaben mit Leichtigkeit</h1>
+      <p>Effiziente Teamarbeit und Aufgabenverwaltung für jeden.</p>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <div class="feature-box">
+            <i class="fas fa-users"></i>
+            <h5>Gruppenverwaltung</h5>
+            <p>Erstelle und verwalte deine Gruppen mit Leichtigkeit, lade Mitglieder ein und bestimme Admins.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-box">
+            <i class="fas fa-tasks"></i>
+            <h5>Aufgabenorganisation</h5>
+            <p>Behalte den Überblick über alle Aufgaben und teile diese effizient unter den Mitgliedern auf.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-box">
+            <i class="fas fa-bell"></i>
+            <h5>Echtzeit-Benachrichtigungen</h5>
+            <p>Bleibe immer informiert, wenn sich etwas in deinen Gruppen ändert oder neue Aufgaben erstellt werden.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Starte noch heute mit HomeAssist!</h2>
+      <p>Verwalte deine Aufgaben effizient und arbeite produktiv in deinem Team.</p>
+      <%= link_to 'Kostenlos Registrieren', new_registration_path, class: 'btn btn-light btn-lg' %>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 HomeAssist. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS und jQuery (optional für interaktive Komponenten) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Für Icons -->
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gruppe beitreten</title>
+    <%= stylesheet_link_tag "home", media: "all", "data-turbo-track": "reload" %>
+  </head>
+  <body>
+
+    <div class="join-group-container">
+      <h1>Gruppe beitreten</h1>
+
+      <% if flash[:alert] %>
+        <p class="flash-alert"><%= flash[:alert] %></p>
+      <% end %>
+
+      <%= form_with url: join_group_path, method: :post do %>
+        <div class="form-group">
+          <%= label_tag :group_code, "Gruppen-Code", class: "form-label" %>
+          <%= text_field_tag :group_code, nil, class: "form-control" %>
+        </div>
+
+        <div class="form-buttons">
+          <%= submit_tag 'Gruppe beitreten', class: "custom-btn btn-primary" %>
+          <%= link_to 'Zurück zur Startseite', old_home_path, class: "custom-btn btn-secondary" %>
+        </div>
+      <% end %>
+
+    </div>
+
+  </body>
+</html>
