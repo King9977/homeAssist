@@ -9,6 +9,14 @@ class User < ApplicationRecord
   attr_accessor :current_password
   
   enum role: { user: 0, admin: 1 }
+  
+  def display_role
+    if admin?
+      "Premium"
+    else
+      "Basic"
+    end
+  end
 
   # Assoziationen
   has_many :group_memberships

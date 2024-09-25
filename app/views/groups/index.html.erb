@@ -52,7 +52,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @groups.each do |group| %>
+        <% current_user.groups.each do |group| %>
           <tr>
             <td><%= group.name %></td>
             <td>

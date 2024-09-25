@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_24_182954) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_25_105742) do
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "user_id", null: false
@@ -36,6 +36,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_24_182954) do
     t.boolean "admin", default: false
     t.index ["group_id"], name: "index_group_memberships_on_group_id"
     t.index ["user_id"], name: "index_group_memberships_on_user_id"
+  end
+
+  create_table "group_users", force: :cascade do |t|
+    t.integer "group_id", null: false
+    t.integer "user_id", null: false
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_users_on_group_id"
+    t.index ["user_id"], name: "index_group_users_on_user_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -136,6 +146,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_24_182954) do
   add_foreign_key "group_admins_groups", "users"
   add_foreign_key "group_memberships", "groups"
   add_foreign_key "group_memberships", "users"
+  add_foreign_key "group_users", "groups"
+  add_foreign_key "group_users", "users"
   add_foreign_key "members", "groups"
   add_foreign_key "members", "users"
   add_foreign_key "resources", "groups"

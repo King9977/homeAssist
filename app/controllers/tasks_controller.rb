@@ -1,7 +1,8 @@
 class TasksController < ApplicationController
   before_action :set_group
   before_action :set_task, only: [:edit, :update, :destroy, :update_status]
-
+  before_action :require_login
+  
   def index
     @group = Group.find(params[:group_id])
     @tasks = @group.tasks
@@ -10,24 +11,28 @@ class TasksController < ApplicationController
   def new
     @task = @group.tasks.build
     @task = @group.tasks.new
+    @group = Group.find(params[:group_id])
   end
 
-def create
-  @task = @group.tasks.build(task_params)
-  @group = Group.find(params[:group_id])
-  @task.user_id = current_user.id  # Setzt den aktuellen Benutzer als Ersteller der Aufgabe
-  @task.status ||= "offen"
+  def create
+    @task = @group.tasks.build(task_params)
+    @group = Group.find(params[:group_id])
+    @task.user_id = current_user.id  # Setzt den aktuellen Benutzer als Ersteller der Aufgabe
+    @task.status ||= "offen"
   
-  if @task.save
-    redirect_to group_tasks_path(@group), notice: 'Aufgabe erfolgreich erstellt.'
-  else
-    render :new
+    if @task.save
+      redirect_to group_tasks_path(@group), notice: 'Aufgabe erfolgreich erstellt.'
+    else
+      render :new
+    end
+   end
+
+
+
+  def edit
+    @group = Group.find(params[:group_id])
+    @task = @group.tasks.find(params[:id])
   end
-end
-
-
-
-  def edit; end
 
   def update
     @group = Group.find(params[:group_id])
@@ -62,6 +67,7 @@ end
   end
   
   def edit_status
+    @group = Group.find(params[:group_id])
     @task = @group.tasks.find(params[:id])
   end
 

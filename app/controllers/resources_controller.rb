@@ -2,8 +2,10 @@ class ResourcesController < ApplicationController
   before_action :set_group
   before_action :set_resource, only: [:edit, :update, :destroy]
   before_action :require_group_admin, only: [:edit, :update, :destroy]
-
+  before_action :require_login
+  
   def index
+    @group = Group.find(params[:group_id])
     @resources = @group.resources
   end
 
@@ -44,7 +46,7 @@ end
 
   private
 
-  def set_group
+def set_group
     @group = Group.find(params[:group_id])
   end
 

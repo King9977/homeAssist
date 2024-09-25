@@ -1,19 +1,20 @@
 class GroupsController < ApplicationController
   before_action :require_admin, only: [:new, :create]
   before_action :set_group, only: [:show, :kick_user, :promote_to_admin, :leave_group]  # Hier sicherstellen, dass set_group vor promote_to_admin aufgerufen wird
-
+  before_action :require_login
 
   # Zeigt alle Gruppen, denen der Benutzer beigetreten ist oder die er erstellt hat
   def index
     @groups = current_user.groups + current_user.created_groups
     @groups = current_user.groups.distinct
-
+    @groups = Group.all
   end
 
   # Gruppendetails anzeigen
   def show
     @members = @group.users # Alle Mitglieder der Gruppe
     @group_code = @group.code # Der Gruppenbeitrittscode
+    @group = Group.find(params[:id])
   end
 
   # Zeigt das Formular für den Beitritt zu einer Gruppe

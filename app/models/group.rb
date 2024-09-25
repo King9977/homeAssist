@@ -1,7 +1,7 @@
 class Group < ApplicationRecord
 
   has_many :tasks, dependent: :destroy  # Assoziation zu Tasks
-
+  
   belongs_to :creator, class_name: 'User'
 
   # Für mehrere Gruppenadmins
