@@ -1,6 +1,5 @@
 class Comment < ApplicationRecord
   belongs_to :task
-  belongs_to :user
-  
+  belongs_to :usera
   validates :body, presence: true
 end

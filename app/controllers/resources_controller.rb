@@ -23,7 +23,6 @@ class ResourcesController < ApplicationController
   end
 
   def edit
-    # Bearbeitungslogik
   end
 
   def update
@@ -35,18 +34,17 @@ class ResourcesController < ApplicationController
   end
 
   def destroy
-  if @group.admin?(current_user)
-    @resource.destroy
-    redirect_to group_resources_path(@group), notice: 'Ressource wurde erfolgreich gelöscht.'
-  else
-    redirect_to group_resources_path(@group), alert: 'Nur Gruppenadmins können Ressourcen löschen.'
+    if @group.admin?(current_user)
+      @resource.destroy
+      redirect_to group_resources_path(@group), notice: 'Ressource wurde erfolgreich gelöscht.'
+    else
+      redirect_to group_resources_path(@group), alert: 'Nur Gruppenadmins können Ressourcen löschen.'
+    end
   end
-end
-
 
   private
 
-def set_group
+  def set_group
     @group = Group.find(params[:group_id])
   end
 
@@ -58,7 +56,6 @@ def set_group
     params.require(:resource).permit(:name, :quantity)
   end
 
-  # Methode, um zu überprüfen, ob der aktuelle Benutzer ein Gruppenadmin ist
   def require_group_admin
     unless @group.group_admins.include?(current_user)
       redirect_to group_resources_path(@group), alert: 'Nur Gruppenadmins können diese Aktion ausführen.'

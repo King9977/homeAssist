@@ -30,12 +30,12 @@
 
               <td>
                 <% if group.admin?(current_user) %>
-                  <p>Du bist Admin in dieser Gruppe.</p>
+                  <p>Du bist Haushaltsmanager in dieser Gruppe.</p>
                 <% else %>
                   <% if is_admin_in_any_group %>
-                    <p>Sie sind kein Admin in dieser Gruppe, aber können trotzdem den Benutzer bearbeiten, da Sie Admin in einer anderen gemeinsamen Gruppe sind.</p>
+                    <p>Sie sind kein Haushaltsmanager in dieser Gruppe, aber können trotzdem den Benutzer bearbeiten, da Sie Haushaltsmanager in einer anderen gemeinsamen Gruppe sind.</p>
                   <% else %>
-                    <p>Sie sind kein Admin in dieser Gruppe.</p>
+                    <p>Sie sind kein Haushaltsmanager in dieser Gruppe.</p>
                   <% end %>
                 <% end %>
               </td>

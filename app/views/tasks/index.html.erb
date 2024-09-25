@@ -18,7 +18,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li>
-          <a class="nav-link" href="<%= old_home_path %>">Zur Hauptseite</a>
+          <a class="nav-link" href="<%= home_path %>">Zur Hauptseite</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<%= profile_path %>">Profil</a>
@@ -77,11 +77,11 @@
                     <% end %>
                   </td>
                   <td>
-                    <% if @group.admin?(current_user) || current_user == task.assigned_user %>
                       <div class="d-flex gap-2 flex-column flex-md-row"> <!-- Flex für mobile Ansicht -->
                         <%= link_to 'Status bearbeiten', edit_status_group_task_path(@group, task), class: 'btn btn-secondary' %>
-                        <%= link_to 'Aufgabe bearbeiten', edit_group_task_path(@group, task), class: 'btn btn-primary' %>
+                      <% if @group.admin?(current_user) || current_user == task.assigned_user %>
                         <% if @group.admin?(current_user) %>
+                          <%= link_to 'Aufgabe bearbeiten', edit_group_task_path(@group, task), class: 'btn btn-primary' %>
                           <%= button_to 'Löschen', group_task_path(@group, task), method: :delete, data: { confirm: 'Möchtest du diese Aufgabe wirklich löschen?' }, class: 'btn btn-danger mt-2' %>
                         <% end %>
                       </div>

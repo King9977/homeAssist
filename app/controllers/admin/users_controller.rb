@@ -32,7 +32,7 @@ end
   private
 
   def require_admin
-    redirect_to old_home_path, alert: 'Nur Administratoren haben Zugriff auf diese Seite.' unless current_user.admin?
+    redirect_to home_path, alert: 'Nur Administratoren haben Zugriff auf diese Seite.' unless current_user.admin?
   end
 
   def user_params

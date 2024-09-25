@@ -15,7 +15,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li>
-          <a class="nav-link" href="<%= old_home_path %>">Zur Hauptseite</a>
+          <a class="nav-link" href="<%= home_path %>">Zur Hauptseite</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<%= profile_path %>">Profil</a>
@@ -36,11 +36,9 @@
 
     <div class="resources-container">
       <h1>Ressourcen in der Gruppe <%= @group.name %></h1>
-<% if @group.admin?(current_user) %>
   <div class="form-buttons">
     <%= link_to 'Neue Ressource erstellen', new_group_resource_path(@group), class: 'custom-btn btn-success' %>
   </div>
-<% end %>
       <table class="resource-table">
         <thead>
           <tr>
@@ -61,7 +59,7 @@
                     <%= button_to 'Löschen', group_resource_path(@group, resource), method: :delete, data: { confirm: 'Möchtest du diese Ressource wirklich löschen?' }, class: 'btn btn-danger' %>
                   </div>
                 <% else %>
-                  <p>Nur Gruppenadmins können Ressourcen erstellen, bearbeiten oder löschen.</p>
+                  <p>Nur Haushaltsmanagers können Ressourcen bearbeiten oder löschen.</p>
                 <% end %>
               </td>
             </tr>

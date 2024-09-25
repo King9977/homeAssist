@@ -1,13 +1,10 @@
 class ApplicationController < ActionController::Base
   
-  include PaperTrail::Rails::Controller  # Modul für PaperTrail einbinden
-
-  
+  include PaperTrail::Rails::Controller
   before_action :set_paper_trail_whodunnit
 
-  # Diese Methode wird von PaperTrail verwendet, um festzustellen, wer eine Änderung gemacht hat
   def user_for_paper_trail
-    current_user ? current_user.id : 'Anonymous' # Verwende current_user, um den aktuell angemeldeten Benutzer zu ermitteln
+    current_user ? current_user.id : 'Anonymous'
   end
   
   helper_method :current_user, :logged_in?, :admin?
@@ -34,7 +31,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Hilfsmethode, um zu prüfen, ob der aktuelle Benutzer Admin ist
   def admin?
     current_user&.admin?
   end

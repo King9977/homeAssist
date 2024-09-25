@@ -55,23 +55,13 @@
                       <!-- Gruppenname oder Beschreibung -->
                       <h5 class="group-name">Gruppe: <%= group.name %></h5>
                     </div>
-
-                    <div class="row">
                       <!-- Verwaltung und Ansehen Sektion -->
-                      <div class="col-md-6">
                         <h6>Verwalten</h6>
                         <!-- Links für Gruppenadmins -->
                         <a href="<%= group_tasks_path(group) %>" class="btn btn-secondary btn-block mb-2">Aufgaben ansehen/ verwalten</a>
                         <a href="<%= group_resources_path(group) %>" class="btn btn-secondary btn-block mb-2">Ressourcen ansehen/ verwalten</a>
-                        <a href="<%= group_path(group) %>" class="btn btn-secondary btn-block mb-2">Mitglieder verwalten</a>
-                      </div>
-
-                      <div class="col-md-6">
-                        <!-- Freier Bereich für andere Inhalte -->
-                      </div>
-                    </div>
+                        <a href="<%= group_path(group) %>" class="btn btn-secondary btn-block mb-2">Mitglieder ansehen/ verwalten</a>
                   </li>
-
                   <!-- Füge die Gruppen-ID zum Set hinzu, nachdem sie verarbeitet wurde -->
                   <% seen_group_ids.add(group.id) %>
                 <% end %>

@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def new
-    # Zeigt das Login-Formular an
   end
 
   def create
@@ -8,9 +7,8 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to old_home_path, notice: 'Erfolgreich eingeloggt.'
+      redirect_to home_path, notice: 'Erfolgreich eingeloggt.'
     else
-      # Setze nur einmal die Flash-Nachricht
       flash.now[:alert] = 'Ungültige E-Mail oder Passwort.'
       render :new
     end

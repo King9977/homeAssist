@@ -15,7 +15,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li>
-          <a class="nav-link" href="<%= old_home_path %>">Zur Hauptseite</a>
+          <a class="nav-link" href="<%= home_path %>">Zur Hauptseite</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<%= profile_path %>">Profil</a>
@@ -38,7 +38,7 @@
 
       <p><strong>Gruppenbeitrittscode:</strong> <%= @group_code %></p>
 
-      <h2>Gruppenadmins</h2>
+      <h2>Haushaltsmanagers</h2>
       <table class="group-table">
         <thead>
           <tr>
@@ -63,7 +63,7 @@
       </table>
     <br></br>
 
-      <h2>Mitglieder</h2>
+      <h2>Haushaltsmitglieder</h2>
   <table class="group-table">
   <thead>
     <tr>
@@ -80,7 +80,7 @@
             <% if @group.group_admins.include?(current_user) %>
               <% unless member == current_user %>
                 <div class="button-group">
-                  <%= button_to 'Zu Admin machen', promote_to_admin_group_path(@group, user_id: member.id), method: :patch, class: 'custom-btn btn-warning', data: { confirm: 'Soll dieser Benutzer ein Admin werden?' } %>
+                  <%= button_to 'Zum Haushaltsmanager machen', promote_to_admin_group_path(@group, user_id: member.id), method: :patch, class: 'custom-btn btn-warning', data: { confirm: 'Soll dieser Benutzer ein Admin werden?' } %>
                   <%= button_to 'Rauswerfen', kick_user_group_path(@group, user_id: member.id), method: :delete, class: 'custom-btn btn-danger', data: { confirm: 'Bist du sicher?' } %>
                 </div>
               <% end %>

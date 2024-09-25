@@ -8,7 +8,7 @@ class RegistrationsController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to old_home_path, notice: 'Erfolgreich registriert.'
+      redirect_to home_path, notice: 'Erfolgreich registriert.'
     else
       flash.now[:alert] = @user.errors.full_messages.join(', ')
       render :new

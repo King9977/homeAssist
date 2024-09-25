@@ -10,14 +10,13 @@ class TasksController < ApplicationController
 
   def new
     @task = @group.tasks.build
-    @task = @group.tasks.new
     @group = Group.find(params[:group_id])
   end
 
   def create
     @task = @group.tasks.build(task_params)
     @group = Group.find(params[:group_id])
-    @task.user_id = current_user.id  # Setzt den aktuellen Benutzer als Ersteller der Aufgabe
+    @task.user_id = current_user.id
     @task.status ||= "offen"
   
     if @task.save
@@ -25,9 +24,7 @@ class TasksController < ApplicationController
     else
       render :new
     end
-   end
-
-
+  end
 
   def edit
     @group = Group.find(params[:group_id])
@@ -47,16 +44,15 @@ class TasksController < ApplicationController
   end
 
   def destroy
-  if @group.admin?(current_user)
-    @task.destroy
-    redirect_to group_tasks_path(@group), notice: 'Aufgabe erfolgreich gelöscht.'
-  else
-    redirect_to group_tasks_path(@group), alert: 'Nur Gruppenadministratoren können Aufgaben löschen.'
+    if @group.admin?(current_user)
+      @task.destroy
+      redirect_to group_tasks_path(@group), notice: 'Aufgabe erfolgreich gelöscht.'
+    else
+      redirect_to group_tasks_path(@group), alert: 'Nur Gruppenadministratoren können Aufgaben löschen.'
+    end
   end
-end
 
-
-   def update_status
+  def update_status
     @task = @group.tasks.find(params[:id])
     
     if @task.update(status: params[:task][:status], status_comment: params[:task][:status_comment])
