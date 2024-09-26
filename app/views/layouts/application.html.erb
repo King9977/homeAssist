@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>HomeAssist</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!-- Bootstrap CSS einbinden -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Javascript & Turbo (für Rails UJS) -->
     <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
-    <!-- Hauptinhalt -->
+</head>
+<body>
     <div class="container mt-5">
-      <%= yield %>
+        <%= yield %>
     </div>
 
-    <!-- Bootstrap JavaScript einbinden -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>

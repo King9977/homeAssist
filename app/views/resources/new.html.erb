@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neue Ressource für Gruppe: <%= @group.name %></title>
     <%= stylesheet_link_tag "home", media: "all", "data-turbo-track": "reload" %>
-  </head>
-  <body>
+</head>
+<body>
 
     <div class="new-resource-container">
-      <h1>Neue Ressource für Gruppe: <%= @group.name %></h1>
+        <h1>Neue Ressource für Gruppe: <%= @group.name %></h1>
 
-      <%= form_with(model: [@group, @resource], local: true) do |form| %>
-        <div class="form-group">
-          <%= form.label :name, "Ressourcenname", class: "form-label" %>
-          <%= form.text_field :name, class: "form-control" %>
-        </div>
+        <%= form_with(model: [@group, @resource], local: true) do |form| %>
+            <div class="form-group">
+                <%= form.label :name, "Ressourcenname", class: "form-label" %>
+                <%= form.text_field :name, class: "form-control" %>
+            </div>
 
-        <div class="form-group">
-          <%= form.label :description, "Beschreibung", class: "form-label" %>
-          <%= form.text_area :description, class: "form-control" %>
-        </div>
+            <div class="form-group">
+                <%= form.label :description, "Beschreibung", class: "form-label" %>
+                <%= form.text_area :description, class: "form-control" %>
+            </div>
+			
+			<div class="form-group">
+			     <%= form.label :quantity, "Menge", class: "form-label" %>
+			     <%= form.number_field :quantity, class: "form-control" %>
+			</div>
 
-        <div class="form-buttons">
-          <%= form.submit "Ressource erstellen", class: "custom-btn btn-success" %>
-          <%= link_to 'Zurück', group_resources_path(@group), class: 'custom-btn btn-secondary' %>
-        </div>
-      <% end %>
+            <div class="form-buttons">
+                <%= form.submit "Ressource erstellen", class: "custom-btn btn-success" %>
+                <%= link_to 'Zurück', group_resources_path(@group), class: 'custom-btn btn-secondary' %>
+            </div>
+        <% end %>
 
     </div>
 
-  </body>
+</body>
 </html>

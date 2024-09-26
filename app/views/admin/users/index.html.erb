@@ -1,66 +1,65 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benutzerübersicht</title>
     <%= stylesheet_link_tag "home", media: "all", "data-turbo-track": "reload" %>
-  </head>
-  <body>
+</head>
+<body>
 
     <nav class="navbar navbar-expand-lg navbar-custom">
-      <a class="navbar-brand" href="#">HomeAssist</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li>
-          <a class="nav-link" href="<%= home_path %>">Zur Hauptseite</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= profile_path %>">Profil</a>
-          </li>
-          <!-- Neuer Gruppen-Link -->
-          <li class="nav-item">
-            <a class="nav-link" href="<%= groups_path %>">Gruppenverwaltung</a>
-          </li>
-          <li>
-            <a class="nav-link" href="<%= activities_path %>">Aktivitäten-Feed</a>
-		  </li>
-          <li class="nav-item">
-  			<%= button_to 'Logout', logout_path, method: :delete, class: 'nav-link btn btn-link logout-btn', data: { confirm: 'Möchtest du dich wirklich ausloggen?' }, form: { class: 'd-inline' } %>
-		  </li>
-        </ul>
-      </div>
+        <a class="navbar-brand" href="#">HomeAssist</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <a class="nav-link" href="<%= home_path %>">Zur Hauptseite</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%= profile_path %>">Profil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%= groups_path %>">Gruppenverwaltung</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="<%= activities_path %>">Aktivitäten-Feed</a>
+                </li>
+                <li class="nav-item">
+                    <%= button_to 'Logout', logout_path, method: :delete, class: 'nav-link btn btn-link logout-btn', data: { confirm: 'Möchtest du dich wirklich ausloggen?' }, form: { class: 'd-inline' } %>
+                </li>
+            </ul>
+        </div>
     </nav>
     
     <div class="user-overview-container">
-  <h1>Benutzerübersicht der Gemeinsame Gruppenmitglieder</h1>
+        <h1>Benutzerübersicht der Gemeinsame Gruppenmitglieder</h1>
 
-  <table class="user-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>E-Mail</th>
-        <th>Mitgliedschaftsstatus</th>
-        <th>Aktionen</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.name %></td>
-          <td><%= user.email %></td>
-          <td><%= user.display_role %></td>
-          <td>
-            <%= link_to 'Bearbeiten', edit_admin_user_path(user), class: "action-link" %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>E-Mail</th>
+                    <th>Mitgliedschaftsstatus</th>
+                    <th>Aktionen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each do |user| %>
+                    <tr>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.display_role %></td>
+                        <td>
+                            <%= link_to 'Bearbeiten', edit_admin_user_path(user), class: "action-link" %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
 
-  </body>
+</body>
 </html>

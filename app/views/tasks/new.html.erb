@@ -1,67 +1,64 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neue Aufgabe erstellen</title>
     <%= stylesheet_link_tag "home", media: "all", "data-turbo-track": "reload" %>
-  </head>
-  <body>
+</head>
+<body>
 
     <div class="new-task-container">
-      <h1>Neue Aufgabe erstellen</h1>
+        <h1>Neue Aufgabe erstellen</h1>
 
-      <%= form_with model: [@group, @task], local: true do |f| %>
-        <div class="form-group">
-          <%= f.label :title, "Titel", class: "form-label" %>
-          <%= f.text_field :title, class: "form-control" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :description, "Beschreibung", class: "form-label" %>
-          <%= f.text_area :description, class: "form-control" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :due_date, "Fälligkeitsdatum", class: "form-label" %>
-          <%= f.date_select :due_date, class: "form-control" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :assigned_user_id, "Benutzer zuweisen", class: "form-label" %>
-          <%= f.collection_select :assigned_user_id, @group.users, :id, :name, prompt: "Wähle einen Benutzer", class: "form-control" %>
-        </div>
-
-        <!-- Ressourcen Mehrfachauswahl -->
-        <div class="form-group">
-          <%= f.label :resource_ids, "Ressourcen zuweisen", class: "form-label" %>
-          <%= f.collection_check_boxes :resource_ids, @group.resources, :id, :name do |b| %>
-            <div class="form-check">
-              <%= b.check_box(class: "form-check-input") %>
-              <%= b.label(class: "form-check-label") %>
+        <%= form_with model: [@group, @task], local: true do |f| %>
+            <div class="form-group">
+                <%= f.label :title, "Titel", class: "form-label" %>
+                <%= f.text_field :title, class: "form-control" %>
             </div>
-          <% end %>
-        </div>
 
-        <div class="form-buttons">
-          <%= f.submit "Aufgabe erstellen", class: "custom-btn btn-primary" %>
-          <%= link_to 'Zurück', group_tasks_path(@group), class: 'custom-btn btn-secondary' %>
-        </div>
-      <% end %>
+            <div class="form-group">
+                <%= f.label :description, "Beschreibung", class: "form-label" %>
+                <%= f.text_area :description, class: "form-control" %>
+            </div>
 
-      <!-- Fehleranzeige -->
-      <% if @task.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@task.errors.count, "Fehler") %> verhinderten, dass diese Aufgabe gespeichert werden konnte:</h2>
-          <ul>
-            <% @task.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+            <div class="form-group">
+                <%= f.label :due_date, "Fälligkeitsdatum", class: "form-label" %>
+                <%= f.date_select :due_date, class: "form-control" %>
+            </div>
 
+            <div class="form-group">
+                <%= f.label :assigned_user_id, "Benutzer zuweisen", class: "form-label" %>
+                <%= f.collection_select :assigned_user_id, @group.users, :id, :name, prompt: "Wähle einen Benutzer", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :resource_ids, "Ressourcen zuweisen", class: "form-label" %>
+                <%= f.collection_check_boxes :resource_ids, @group.resources, :id, :name do |b| %>
+                    <div class="form-check">
+                        <%= b.check_box(class: "form-check-input") %>
+                        <%= b.label(class: "form-check-label") %>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class="form-buttons">
+                <%= f.submit "Aufgabe erstellen", class: "custom-btn btn-primary" %>
+                <%= link_to 'Zurück', group_tasks_path(@group), class: 'custom-btn btn-secondary' %>
+            </div>
+        <% end %>
+
+        <% if @task.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@task.errors.count, "Fehler") %> verhinderten, dass diese Aufgabe gespeichert werden konnte:</h2>
+                <ul>
+                    <% @task.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
     </div>
 
-  </body>
+</body>
 </html>

@@ -3,7 +3,6 @@ body {
   padding-top: 100px;
 }
 
-
 .container {
   background-color: white;
   border: 1px solid #e3e3e3;
@@ -13,7 +12,6 @@ body {
   margin: 0 auto;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
-
 
 .navbar-custom {
   background-color: #6c757d;
@@ -28,7 +26,6 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
-
 
 .navbar-custom a.nav-link {
   color: white;
@@ -65,7 +62,6 @@ h6 {
   margin-bottom: 10px;
 }
 
-/* Für alle Buttons */
 .btn {
   padding: 10px 20px;
   font-size: 1rem;
@@ -76,9 +72,8 @@ h6 {
 }
 
 .btn-secondary {
-  background-color: #6c757d; /* Graue Farbe für sekundäre Buttons */
+  background-color: #6c757d;
 }
-
 
 h1 {
   color: #000000;
@@ -95,34 +90,31 @@ h1 {
   .btn {
     width: 100%;
   }
-  
+
   .navbar-custom {
     padding: 0.5rem;
   }
 }
 
-
-/* Stil für den Logout-Button mit rotem Hintergrund */
 .logout-btn {
-  background-color: #dc3545; /* Roter Hintergrund */
-  color: white; /* Weißer Text */
-  padding: 8px 16px; /* Innenabstand des Buttons */
-  border-radius: 4px; /* Abgerundete Ecken */
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
   text-align: center;
-  border: none; /* Entfernt Standardrahmen */
+  border: none;
 }
 
 .logout-btn:hover {
-  background-color: #c82333; /* Etwas dunkleres Rot beim Hover */
-  color: white; /* Weißer Text bleibt erhalten */
+  background-color: #c82333;
+  color: white;
   text-decoration: none;
 }
 
 .logout-btn:focus {
-  outline: none; /* Entfernt den Fokuseffekt */
+  outline: none;
 }
 
-/* Allgemeine Button-Styles */
 .custom-btn {
   padding: 10px 20px;
   font-size: 16px;
@@ -133,54 +125,51 @@ h1 {
   transition: background-color 0.3s ease;
 }
 
-/* Spezifische Buttons */
 .btn-premium {
-  background-color: #006400; /* Dunkelgrün */
+  background-color: #006400;
 }
 
 .btn-premium:hover {
-  background-color: #228B22; /* Etwas helleres Grün beim Hover */
+  background-color: #228B22;
 }
 
 .btn-secondary {
-  background-color: #4f4f4f; /* Dunkles Grau */
+  background-color: #4f4f4f;
 }
 
 .btn-secondary:hover {
-  background-color: #696969; /* Helleres Grau beim Hover */
+  background-color: #696969;
 }
 
 .btn-home {
-  background-color: #2e8b57; /* Seegrün */
+  background-color: #2e8b57;
 }
 
 .btn-home:hover {
-  background-color: #3cb371; /* Mittelgrün beim Hover */
+  background-color: #3cb371;
 }
 
 .btn-edit {
-  background-color: #1e90ff; /* Modernes Blau */
+  background-color: #1e90ff;
 }
 
 .btn-edit:hover {
-  background-color: #4682b4; /* Stahlblau beim Hover */
+  background-color: #4682b4;
 }
 
 .btn-logout {
-  background-color: #b22222; /* Feuerrot */
+  background-color: #b22222;
 }
 
 .btn-logout:hover {
-  background-color: #dc143c; /* Karmesinrot beim Hover */
+  background-color: #dc143c;
 }
 
-/* Optional: Animation für alle Buttons */
 .custom-btn:focus {
   outline: none;
   box-shadow: 0 0 5px #000;
 }
 
-/* Tabelle-Styles */
 .user-table {
   width: 100%;
   border-collapse: collapse;
@@ -208,7 +197,6 @@ h1 {
   background-color: #f1f1f1;
 }
 
-/* Aktion-Links */
 .action-link {
   color: #007bff;
   text-decoration: none;
@@ -226,13 +214,12 @@ h1 {
   text-decoration: underline;
 }
 
-/* Buttons nebeneinander */
 .button-group {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
-/* Container für die Gruppenverwaltung */
+
 .group-management-container {
   width: 90%;
   max-width: 1000px;
@@ -243,7 +230,6 @@ h1 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Buttons für die Aktionen */
 .action-buttons {
   display: flex;
   justify-content: flex-start;
@@ -251,7 +237,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* Tabelle-Styles */
 .group-table {
   width: 100%;
   border-collapse: collapse;
@@ -281,12 +266,12 @@ h1 {
 .group-table tr:hover {
   background-color: #e2e6ea;
 }
+
 .button-group {
   display: flex;
-  gap: 5px; /* Sehr kleiner Abstand zwischen den Buttons */
+  gap: 5px;
 }
 
-/* Container für die Ressourcenübersicht */
 .resources-container {
   width: 100%;
   max-width: 800px;
@@ -297,7 +282,6 @@ h1 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Liste der Ressourcen */
 .resource-list {
   list-style: none;
   padding: 0;
@@ -308,12 +292,11 @@ h1 {
   margin-bottom: 15px;
 }
 
-/* Buttons für Bearbeiten und Löschen */
 .button-group {
   display: flex;
-  gap: 5px; /* Geringer Abstand zwischen den Buttons */
+  gap: 5px;
 }
-/* Container für die Ressourcenübersicht */
+
 .resources-container {
   width: 100%;
   max-width: 1000px;
@@ -324,7 +307,6 @@ h1 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Tabelle für Ressourcen */
 .resource-table {
   width: 100%;
   border-collapse: collapse;
@@ -383,7 +365,6 @@ h1 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Container für die Aufgabenübersicht */
 .tasks-container {
   width: 100%;
   max-width: 1200px;
@@ -394,7 +375,6 @@ h1 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Tabelle für Aufgaben */
 .tasks-table {
   width: 100%;
   border-collapse: collapse;
@@ -433,7 +413,6 @@ h1 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Fehleranzeige */
 #error_explanation {
   background-color: #f8d7da;
   color: #721c24;
@@ -442,13 +421,14 @@ h1 {
   margin-top: 20px;
   border-radius: 5px;
 }
+
 @media (max-width: 768px) {
   .button-group {
     flex-direction: column;
     gap: 10px;
   }
   
-    .group-management-container {
+  .group-management-container {
     width: 100%;
     padding: 10px;
   }
@@ -462,12 +442,12 @@ h1 {
     font-size: 0.9rem;
   }
           
-   .form-buttons {
+  .form-buttons {
     flex-direction: column;
-   }
+  }
         
-   .form-buttons a, .form-buttons button {
-     width: 100%;
-      margin-bottom: 10px;
-   }
+  .form-buttons a, .form-buttons button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }

@@ -1,82 +1,67 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomeAssist</title>
-    <!-- Nur das spezifische home.css laden -->
     <%= stylesheet_link_tag "home", media: "all", "data-turbo-track": "reload" %>
-  </head>
-  <body>
-    <!-- Navbar -->
+</head>
+<body>
     <nav class="navbar navbar-expand-lg navbar-custom">
-      <a class="navbar-brand" href="#">HomeAssist</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="<%= profile_path %>">Profil</a>
-          </li>
-          <!-- Neuer Gruppen-Link -->
-          <li class="nav-item">
-            <a class="nav-link" href="<%= groups_path %>">Gruppenverwaltung</a>
-          </li>
-          <li>
-            <a class="nav-link" href="<%= activities_path %>">Aktivitäten-Feed</a>
-		  </li>
-          <li class="nav-item">
-  			<%= button_to 'Logout', logout_path, method: :delete, class: 'nav-link btn btn-link logout-btn', data: { confirm: 'Möchtest du dich wirklich ausloggen?' }, form: { class: 'd-inline' } %>
-		  </li>
-        </ul>
-      </div>
+        <a class="navbar-brand" href="#">HomeAssist</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="<%= profile_path %>">Profil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%= groups_path %>">Gruppenverwaltung</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="<%= activities_path %>">Aktivitäten-Feed</a>
+                </li>
+                <li class="nav-item">
+                    <%= button_to 'Logout', logout_path, method: :delete, class: 'nav-link btn btn-link logout-btn', data: { confirm: 'Möchtest du dich wirklich ausloggen?' }, form: { class: 'd-inline' } %>
+                </li>
+            </ul>
+        </div>
     </nav>
 
-    <!-- Hauptinhalt -->
     <div class="container mt-5">
-      <!-- Titelbereich -->
-      <h1 class="text-center">Willkommen auf der Hauptseite, <%= current_user.name %></h1>
+        <h1 class="text-center">Willkommen auf der Hauptseite, <%= current_user.name %></h1>
 
-      <div class="row justify-content-center">
-        <!-- Gruppen-Bereich -->
-        <div class="col-lg-10">
-          <div class="group-list mt-5">
-            <h2 class="text-center">Deine Gruppen</h2>
-            <ul class="list-group list-group-flush">
-              <!-- Initialisiere ein Set, um Gruppen-IDs zu speichern -->
-              <% seen_group_ids = Set.new %>
-
-              <% current_user.groups.each do |group| %>
-                <!-- Überprüfe, ob die Gruppe bereits angezeigt wurde -->
-                <% unless seen_group_ids.include?(group.id) %>
-                  <li class="list-group-item mb-4">
-                    <div class="group-info">
-                      <!-- Gruppenname oder Beschreibung -->
-                      <h5 class="group-name">Gruppe: <%= group.name %></h5>
-                    </div>
-                      <!-- Verwaltung und Ansehen Sektion -->
-                        <h6>Verwalten</h6>
-                        <!-- Links für Gruppenadmins -->
-                        <a href="<%= group_tasks_path(group) %>" class="btn btn-secondary btn-block mb-2">Aufgaben ansehen/ verwalten</a>
-                        <a href="<%= group_resources_path(group) %>" class="btn btn-secondary btn-block mb-2">Ressourcen ansehen/ verwalten</a>
-                        <a href="<%= group_path(group) %>" class="btn btn-secondary btn-block mb-2">Mitglieder ansehen/ verwalten</a>
-                  </li>
-                  <!-- Füge die Gruppen-ID zum Set hinzu, nachdem sie verarbeitet wurde -->
-                  <% seen_group_ids.add(group.id) %>
-                <% end %>
-              <% end %>
-            </ul>
-          </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="group-list mt-5">
+                    <h2 class="text-center">Deine Gruppen</h2>
+                    <ul class="list-group list-group-flush">
+                        <% seen_group_ids = Set.new %>
+                        <% current_user.groups.each do |group| %>
+                            <% unless seen_group_ids.include?(group.id) %>
+                                <li class="list-group-item mb-4">
+                                    <div class="group-info">
+                                        <h5 class="group-name">Gruppe: <%= group.name %></h5>
+                                    </div>
+                                    <h6>Verwalten</h6>
+                                    <a href="<%= group_tasks_path(group) %>" class="btn btn-secondary btn-block mb-2">Aufgaben ansehen/ verwalten</a>
+                                    <a href="<%= group_resources_path(group) %>" class="btn btn-secondary btn-block mb-2">Ressourcen ansehen/ verwalten</a>
+                                    <a href="<%= group_path(group) %>" class="btn btn-secondary btn-block mb-2">Mitglieder ansehen/ verwalten</a>
+                                </li>
+                                <% seen_group_ids.add(group.id) %>
+                            <% end %>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
-    <!-- Bootstrap JavaScript und jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-  </body>
+</body>
 </html>

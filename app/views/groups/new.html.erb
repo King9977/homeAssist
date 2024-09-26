@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gruppe erstellen</title>
     <%= stylesheet_link_tag "home", media: "all", "data-turbo-track": "reload" %>
-  </head>
-  <body>
+</head>
+<body>
 
     <div class="create-group-container">
-      <h1>Gruppe erstellen</h1>
+        <h1>Gruppe erstellen</h1>
 
-      <%= form_with model: @group, url: groups_path do |f| %>
-        <div class="form-group">
-          <%= f.label :name, "Gruppenname", class: "form-label" %>
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
+        <%= form_with model: @group, url: groups_path do |f| %>
+            <div class="form-group">
+                <%= f.label :name, "Gruppenname", class: "form-label" %>
+                <%= f.text_field :name, class: "form-control" %>
+            </div>
 
-        <div class="form-buttons">
-          <%= f.submit 'Gruppe erstellen', class: "custom-btn btn-primary" %>
-          <%= link_to 'Zurück zur Startseite', home_path, class: "custom-btn btn-secondary" %>
-        </div>
-      <% end %>
+            <div class="form-buttons">
+                <%= f.submit 'Gruppe erstellen', class: "custom-btn btn-primary" %>
+                <%= link_to 'Zurück zur Startseite', home_path, class: "custom-btn btn-secondary" %>
+            </div>
+        <% end %>
 
     </div>
 
-  </body>
+</body>
 </html>
