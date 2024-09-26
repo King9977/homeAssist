@@ -26,5 +26,5 @@ end
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
-  gem 'mocha', require: false
+  #gem 'mocha', require: false
 end

@@ -67,7 +67,7 @@
 
             <div class="form-buttons">
               <%= f.submit 'Änderungen speichern', class: "custom-btn btn-primary" %>
-              <%= link_to 'Zurück zur Übersicht', admin_users_path, class: "custom-btn btn-secondary" %>
+              <%= link_to 'Zurück', admin_users_path, class: "custom-btn btn-secondary" %>
             </div>
           <% end %>
         </div>
@@ -78,6 +78,5 @@
     <% else %>
       <p>Keine gemeinsamen Gruppen.</p>
     <% end %>
-
   </body>
 </html>
