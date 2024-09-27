@@ -1,9 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: MyString
-  quantity: 1
+  name: "Laptop"
+  quantity: 10
+  group_id: <%= groups(:one).id %>
+  description: "Development laptops"
 
 two:
-  name: MyString
-  quantity: 1
+  name: "Marketing Brochures"
+  quantity: 200
+  group_id: <%= groups(:two).id %>
+  description: "Printed marketing materials"

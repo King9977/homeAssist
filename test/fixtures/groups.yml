@@ -1,11 +1,13 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  name: MyString
-  code: MyString
-  created_by: 1
+  name: "Development Team"
+  code: "DEV123"
+  created_by: <%= users(:one).id %>
+  creator_id: <%= users(:one).id %>
+  admin_id: <%= users(:one).id %>
 
 two:
-  name: MyString
-  code: MyString
-  created_by: 1
+  name: "Marketing Team"
+  code: "MARK456"
+  created_by: <%= users(:two).id %>
+  creator_id: <%= users(:two).id %>
+  admin_id: <%= users(:two).id %>

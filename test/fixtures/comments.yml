@@ -1,11 +1,9 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  content: MyText
-  user: one
-  task: one
+  content: "Looks good!"
+  user_id: <%= users(:one).id %>
+  task_id: <%= tasks(:one).id %>
 
 two:
-  content: MyText
-  user: two
-  task: two
+  content: "Need more information on this."
+  user_id: <%= users(:two).id %>
+  task_id: <%= tasks(:two).id %>

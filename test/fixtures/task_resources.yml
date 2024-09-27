@@ -1,9 +1,7 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  task: one
-  resource: one
+  task_id: <%= tasks(:one).id %>
+  resource_id: <%= resources(:one).id %>
 
 two:
-  task: two
-  resource: two
+  task_id: <%= tasks(:two).id %>
+  resource_id: <%= resources(:two).id %>
