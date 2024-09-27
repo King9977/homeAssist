@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "~> 7.2.1"
+gem "rails"
 gem "sprockets-rails"
 gem "sqlite3", "~> 1.4"
 gem 'bcrypt', '~> 3.1.7'
@@ -18,6 +18,12 @@ group :development, :test do
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
 end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+end
+
 
 group :development do
   gem "web-console"

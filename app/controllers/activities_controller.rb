@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
-  before_action :require_login
-
   def index
-    @activities = PaperTrail::Version.order(created_at: :desc)  end
+    @activities = PaperTrail::Version.order(created_at: :desc) # Aktivitäten laden
+    @users = User.where(id: @activities.pluck(:whodunnit).compact).index_by(&:id) # Benutzer vorladen
+  end
 end

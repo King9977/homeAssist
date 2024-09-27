@@ -39,7 +39,7 @@
       <ul class="list-group">
         <% @activities.each do |activity| %>
           <li class="list-group-item">
-            <strong><%= activity.whodunnit || 'Unbekannt' %></strong> hat <%= activity.item_type %> geändert: 
+           <strong><%= User.find_by(id: activity.whodunnit)&.name || 'Unbekannt' %></strong> hat <%= activity.item_type %> geändert: 
             <%= activity.event %> am <%= activity.created_at.strftime("%d.%m.%Y %H:%M") %>.
           </li>
         <% end %>
